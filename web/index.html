@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo Clásico - Reserva tu turno</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Barbería Estilo Clásico</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="services.html">Servicios</a>
+            <a href="about.html">Barberos</a>
+        </nav>
+    </header>
+    <main>
+        <section id="booking">
+            <h2>Reserva tu turno</h2>
+            <form id="booking-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+                <label for="barber">Barbero:</label>
+                <select id="barber">
+                    <option value="Juan">Juan</option>
+                    <option value="Pedro">Pedro</option>
+                    <option value="Luis">Luis</option>
+                </select>
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" required>
+                <label for="time">Hora:</label>
+                <input type="time" id="time" required>
+                <button type="submit">Reservar</button>
+            </form>
+            <div id="confirmation" class="hidden"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
