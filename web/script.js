@@ -1,4 +1,4 @@
-document.getElementById('booking-form').addEventListener('submit', function(e) {
+document.getElementById('form').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('name').value;
     const barber = document.getElementById('barber').value;
