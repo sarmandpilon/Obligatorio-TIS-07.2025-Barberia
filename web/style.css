@@ -2,18 +2,18 @@ body {
     font-family: "Trebuchet MS", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom right, #fee9e1, #fff8de);
+    background: #dad7cd;
 }
 
 header {
-    background: linear-gradient(90deg, #4b306a, #703d3a);
-    color: #ffdf65;
+    background: #588157;
+    color: #ffffff;
     padding: 1.5em 1em;
 }
 
 nav a {
     margin-right: 1em;
-    color: #ffdf65;
+    color: #344e41;
     text-decoration: none;
     font-weight: bold;
 }
@@ -24,13 +24,14 @@ nav a:hover {
 
 main {
     padding: 1.5em;
+    
 }
 
 section {
-    background-color: #ffffff;
+    background-color: #dad7cd;
     border-radius: 8px;
     padding: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     max-width: 500px;
     margin: auto;
 }
@@ -54,5 +55,5 @@ button:hover {
 
 #confirmation {
     margin-top: 1em;
-    color: #008663;
+    color: #344e41;
 }

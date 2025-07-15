@@ -1,16 +1,54 @@
-document.getElementById('form').addEventListener('submit', function(e) {
+// ===== SISTEMA DE RESERVAS EN MEMORIA =====
+function SistemaReservas() {
+    this.reservas = [];
+
+    this.agregarReserva = function(nombre, barbero, fecha, hora) {
+        this.reservas.push({ nombre, barbero, fecha, hora });
+    };
+
+    this.listarReservas = function() {
+        console.log("Reservas actuales:");
+        for (let i = 0; i < this.reservas.length; i++) {
+            const r = this.reservas[i];
+            console.log(`- ${r.nombre} con ${r.barbero} el ${r.fecha} a las ${r.hora}`);
+        }
+    };
+}
+
+// ===== DECLARACIÓN DE SISTEMA Y EVENTOS =====
+let miSistema = new SistemaReservas();
+
+function eventos() {
+    document.querySelector("#form").addEventListener("submit", realizarReserva);
+}
+
+eventos();
+
+// ===== FUNCIONES =====
+function realizarReserva(e) {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const barber = document.getElementById('barber').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
 
-    const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-    appointments.push({ name, barber, date, time });
-    localStorage.setItem('appointments', JSON.stringify(appointments));
+    let nombre = document.querySelector("#name").value.trim();
+    let barbero = document.querySelector("#barber").value;
+    let fecha = document.querySelector("#date").value;
+    let hora = document.querySelector("#time").value;
 
-    const confirmation = document.getElementById('confirmation');
-    confirmation.textContent = `Reserva confirmada para ${name} con ${barber} el ${date} a las ${time}`;
-    confirmation.classList.remove('hidden');
-    this.reset();
-});
+    let mensaje = "";
+
+    if (nombre && barbero && fecha && hora) {
+        miSistema.agregarReserva(nombre, barbero, fecha, hora);
+        mensaje = `Reserva confirmada para ${nombre} con ${barbero} el ${fecha} a las ${hora}.`;
+        document.querySelector("#form").reset();
+    } else {
+        mensaje = "Por favor completá todos los campos.";
+    }
+
+    mostrarMensajeConfirmacion(mensaje);
+    miSistema.listarReservas(); // Solo para depuración
+}
+
+function mostrarMensajeConfirmacion(mensaje) {
+    let div = document.querySelector("#confirmation");
+    div.textContent = mensaje;
+    div.classList.remove("hidden");
+}
