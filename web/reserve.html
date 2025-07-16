@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu turno</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <main>
+        <section id="reserva">
+            <h2>Reserva tu turno</h2>
+            <form id="form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+                <br><br>
+
+                <label for="barber">Barbero:</label>
+                <select id="barber">
+                    <option value="">-- Cualquiera --</option>
+                    <option value="Juan">Juan</option>
+                    <option value="Pedro">Pedro</option>
+                    <option value="Luis">Luis</option>
+                </select>
+                <br><br>
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" required>
+                <br><br>
+                <label for="time">Hora:</label>
+                <input type="time" id="time" step="1800" min="09:00" max="18:00" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <br><br>
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" required>
+                <br><br>
+                <button type="submit">Reservar</button>
+            </form>
+            <div id="confirmation" class="hidden"></div>
+        </section>
+    </main>
+</body>
+</html>
