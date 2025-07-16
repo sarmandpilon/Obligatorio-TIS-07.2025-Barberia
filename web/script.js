@@ -2,8 +2,20 @@
 function SistemaReservas() {
     this.reservas = [];
 
+    this.cargarReservas = function() {
+        const data = localStorage.getItem("reservas");
+        if (data) {
+            this.reservas = JSON.parse(data);
+        }
+    };
+
+    this.guardarReservas = function() {
+        localStorage.setItem("reservas", JSON.stringify(this.reservas));
+    };
+
     this.agregarReserva = function(nombre, barbero, fecha, hora) {
         this.reservas.push({ nombre, barbero, fecha, hora });
+        this.guardarReservas();
     };
 
     this.listarReservas = function() {
@@ -17,12 +29,21 @@ function SistemaReservas() {
 
 // ===== DECLARACIÓN DE SISTEMA Y EVENTOS =====
 let miSistema = new SistemaReservas();
+miSistema.cargarReservas();
 
 function eventos() {
-    document.querySelector("#form").addEventListener("submit", realizarReserva);
+    const form = document.querySelector("#form");
+    if (form) {
+        form.addEventListener("submit", realizarReserva);
+    }
+
+    const tabla = document.querySelector("#tabla-reservas tbody");
+    if (tabla) {
+        cargarListadoAdmin(tabla);
+    }
 }
 
-eventos();
+document.addEventListener("DOMContentLoaded", eventos);
 
 // ===== FUNCIONES =====
 function realizarReserva(e) {
@@ -51,4 +72,14 @@ function mostrarMensajeConfirmacion(mensaje) {
     let div = document.querySelector("#confirmation");
     div.textContent = mensaje;
     div.classList.remove("hidden");
+}
+
+function cargarListadoAdmin(tabla) {
+    tabla.innerHTML = "";
+    for (let i = 0; i < miSistema.reservas.length; i++) {
+        const r = miSistema.reservas[i];
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${r.nombre}</td><td>${r.barbero}</td><td>${r.fecha}</td><td>${r.hora}</td>`;
+        tabla.appendChild(row);
+    }
 }

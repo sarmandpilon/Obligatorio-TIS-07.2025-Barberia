@@ -57,3 +57,15 @@ button:hover {
     margin-top: 1em;
     color: #344e41;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 0.5em;
+    text-align: left;
+}
