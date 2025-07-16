@@ -26,6 +26,13 @@ function SistemaReservas() {
 // ===== DECLARACIÓN DE SISTEMA Y EVENTOS =====
 let miSistema = new SistemaReservas();
 
+// Datos de prueba para mostrar reservas al iniciar
+(() => {
+    const hoy = new Date().toISOString().split('T')[0];
+    miSistema.agregarReserva('Carlos', 'Juan', hoy, '10:00', 'carlos@ejemplo.com', '099111111');
+    miSistema.agregarReserva('María', 'Pedro', hoy, '11:00', 'maria@ejemplo.com', '099222222');
+})();
+
 function eventos() {
     const formReserva = document.querySelector("#form");
     if (formReserva) {
