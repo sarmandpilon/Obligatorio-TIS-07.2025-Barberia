@@ -1,3 +1,4 @@
+/*
 // ===== SISTEMA DE RESERVAS EN MEMORIA =====
 function SistemaReservas() {
     this.reservas = [];
@@ -115,3 +116,4 @@ function realizarLogin(e) {
         alert('Credenciales incorrectas');
     }
 }
+*/
