@@ -9,13 +9,14 @@
 <body>
     <header>
         <h1>Barbería Estilo Clásico</h1>
+        <p class="tagline">tradición y estilo en cada corte</p>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="services.html">Agenda</a>
-            <a href="services.html">Contacto</a>
-            <a href="services.html">Galeria</a>
-            <a href="services.html">Servicios</a>
+            <a href="services.html">Precios</a>
             <a href="about.html">Barberos</a>
+            <a href="gallery.html">Galería</a>
+            <a href="contact.html">Contacto</a>
+            <a href="login.html">Login</a>
         </nav>
     </header>
     <main>
@@ -23,27 +24,37 @@
             <h2>Reserva tu turno</h2>
             <form id="form">
                 <label for="name">Nombre:</label>
-                <input type="text" id="name" >
+                <input type="text" id="name" required>
                 <br><br>
 
                 <label for="barber">Barbero:</label>
                 <select id="barber">
+                    <option value="">-- Cualquiera --</option>
                     <option value="Juan">Juan</option>
                     <option value="Pedro">Pedro</option>
                     <option value="Luis">Luis</option>
                 </select>
                 <br><br>
                 <label for="date">Fecha:</label>
-                <input type="date" id="date" >
+                <input type="date" id="date" required>
                 <br><br>
                 <label for="time">Hora:</label>
-                <input type="time" id="time" >
+                <input type="time" id="time" step="1800" min="09:00" max="18:00" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <br><br>
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" required>
                 <br><br>
                 <button type="submit">Reservar</button>
             </form>
             <div id="confirmation" class="hidden"></div>
         </section>
     </main>
+    <footer>
+        <p>Síguenos en <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

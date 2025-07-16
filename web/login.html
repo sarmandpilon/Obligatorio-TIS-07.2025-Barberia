@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Estilo Clásico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Barbería Estilo Clásico</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="services.html">Precios</a>
+            <a href="about.html">Barberos</a>
+            <a href="gallery.html">Galería</a>
+            <a href="contact.html">Contacto</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Ingreso de administrador</h2>
+        <form id="login-form">
+            <label for="user">Usuario:</label>
+            <input type="text" id="user" required>
+            <br><br>
+            <label for="pass">Contraseña:</label>
+            <input type="password" id="pass" required>
+            <br><br>
+            <button type="submit">Ingresar</button>
+        </form>
+        <div id="reservas-dia" class="hidden">
+            <h3>Reservas de hoy</h3>
+            <ul id="lista-reservas"></ul>
+        </div>
+    </main>
+    <footer>
+        <p>Síguenos en <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
