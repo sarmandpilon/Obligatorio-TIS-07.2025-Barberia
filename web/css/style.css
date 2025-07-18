@@ -2,12 +2,12 @@ body {
     font-family: "Trebuchet MS", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f2f2f2; /* gray background */
-    color: #000; /* black text */
+    background: #e5e5e5;
+    color: #000;
 }
 
 header {
-    background: #0d6efd; /* blue header */
+    background: #1e3a8a;
     color: #ffffff;
     padding: 1.5em 1em;
 }
@@ -17,30 +17,33 @@ header {
     font-style: italic;
 }
 
-header nav a {
-    margin-right: 0.5em;
-    color: #fff;
+
+header .nav-link {
+    background-color: #000; 
+    color: #fff !important; 
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 15px;
+    cursor: pointer;
     text-decoration: none;
     font-weight: bold;
-    background-color: #000;
-    padding: 0.5em 1em;
-    border-radius: 6px;
+    margin: 0.25em;
     display: inline-block;
 }
 
-header nav a:hover {
-    text-decoration: none;
+header .nav-link:hover {
     background-color: #333;
+    color: #fff !important;
+    text-decoration: none;
 }
 
 main {
     padding: 1.5em;
-    
 }
 
 section {
-    background-color: #ffffff; /* white section on gray body */
-    border-radius: 8px;
+    background-color: #ffffff; 
+    border-radius: 15px;
     padding: 1em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     max-width: 500px;
@@ -48,25 +51,25 @@ section {
 }
 
 button {
-    background-color: #000; /* black buttons */
+    background-color: #000; 
     border: none;
-    color: #fff;
+    color: #fff; 
     padding: 0.5em 1em;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #333; /* dark gray on hover */
-}
-
-.hidden {
-    display: none;
+    background-color: #333; 
 }
 
 #confirmation {
     margin-top: 1em;
-    color: #0d6efd; /* blue text for confirmation */
+    color: #1e3a8a; 
+}
+
+.hidden {
+    display: none;
 }
 
 table {
