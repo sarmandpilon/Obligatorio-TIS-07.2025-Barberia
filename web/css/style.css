@@ -1,88 +1,151 @@
 body {
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #e5e5e5;
-    color: #000;
-}
 
+    background-color: #000000; /* Fondo negro */
+
+    color: white;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+ 
 header {
-    background: #1e3a8a;
-    color: #ffffff;
-    padding: 1.5em 1em;
+
+    background-color: #0047ab; /* Azul fuerte */
+
+    color: white;
+
+    padding: 1.5em 0;
+
+    text-align: center;
+
 }
+ 
+header h1 {
 
-.tagline {
-    margin: 0.5em 0;
-    font-style: italic;
-}
+    margin: 0;
 
-
-header .nav-link {
-    background-color: #000; 
-    color: #fff !important; 
-    border: none;
-    padding: 0.5em 1em;
-    border-radius: 15px;
-    cursor: pointer;
-    text-decoration: none;
     font-weight: bold;
-    margin: 0.25em;
-    display: inline-block;
-}
 
-header .nav-link:hover {
-    background-color: #333;
-    color: #fff !important;
-    text-decoration: none;
 }
+ 
+header .tagline {
 
-main {
-    padding: 1.5em;
+    font-size: 1.2em;
+
+    font-style: italic;
+
+    margin-top: 0.3em;
+
 }
+ 
+.nav-link {
 
-section {
-    background-color: #ffffff; 
+    color: white !important;
+
+    margin: 0 0.5em;
+
+    font-weight: 600;
+
+}
+ 
+.nav-link:hover {
+
+    text-decoration: underline;
+
+}
+ 
+/* FORMULARIO */
+
+section#reservas {
+
+    background-color: #1e1e1e; /* gris oscuro */
+
+    color: white;
+
     border-radius: 15px;
-    padding: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    margin: auto;
-}
 
-button {
-    background-color: #000; 
-    border: none;
-    color: #fff; 
-    padding: 0.5em 1em;
-    border-radius: 15px;
-    cursor: pointer;
-}
+    padding: 2em;
 
-button:hover {
-    background-color: #333; 
-}
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 
-#confirmation {
-    margin-top: 1em;
-    color: #1e3a8a; 
-}
+    max-width: 600px;
 
-.hidden {
-    display: none;
-}
+    margin: 3em auto;
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+}
+ 
+section#reservas h2 {
+
+    text-align: center;
+
     margin-bottom: 1em;
-}
 
-th, td {
-    border: 1px solid #ccc;
+    font-weight: bold;
+
+}
+ 
+form label {
+
+    font-weight: 600;
+
+    display: block;
+
+    margin-top: 1em;
+
+}
+ 
+form input,
+
+form select {
+
+    width: 100%;
+
     padding: 0.5em;
-    text-align: left;
+
+    background-color: #333;
+
+    color: white;
+
+    border: 1px solid #666;
+
+    border-radius: 8px;
+
+    margin-top: 0.25em;
+
+}
+ 
+form input::placeholder {
+
+    color: #aaa;
+
+}
+ 
+button[type="submit"] {
+
+    background-color: #cc0000;
+
+    color: white;
+
+    border: none;
+
+    padding: 0.7em 2em;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    width: 100%;
+
+    margin-top: 1.5em;
+
+    transition: background-color 0.3s;
+
+}
+ 
+button[type="submit"]:hover {
+
+    background-color: #a30000;
+
 }
 
-th {
-    background: #eee;
-}
+ 
