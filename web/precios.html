@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Estilo Clásico</title>
+  <title>Precios - Estilo Clásico</title>
 
+  <!-- Google Fonts y estilos -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -25,27 +26,30 @@
       </nav>
     </div>
   </header>
-
-
+ 
   <main class="hero">
-    <section class="login-form text-white text-center">
-      <h2 class="mb-4">Iniciar sesión</h2>
-      <form id="formLogin">
-  <div class="mb-3 text-start">
-    <label for="usuario" class="form-label">Usuario:</label>
-    <input type="text" class="form-control" id="usuario" required />
-  </div>
-  <div class="mb-3 text-start">
-    <label for="password" class="form-label">Contraseña:</label>
-    <input type="password" class="form-control" id="password" required />
-  </div>
-  <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-</form>
-
+    <section class="tabla-precios">
+      <h2 class="text-center mb-4">Nuestros Servicios</h2>
+      <table class="table table-dark table-striped text-center">
+        <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Costo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Corte común</td><td>$500</td></tr>
+          <tr><td>Corte Americano</td><td>$500</td></tr>
+          <tr><td>Corte buzz cut</td><td>$500</td></tr>
+          <tr><td>Corte y Afeitado</td><td>$500</td></tr>
+          <tr><td>Color completo</td><td>$500</td></tr>
+          <tr><td>Color (solo mechas)</td><td>$500</td></tr>
+        </tbody>
+      </table>
     </section>
   </main>
 
-
+  <!-- Footer -->
   <footer class="footer-custom">
     <div class="container text-center py-3">
       <p class="mb-0 text-white">&copy; 2025 Barbería Estilo Clásico. Todos los derechos reservados.</p>
@@ -53,7 +57,5 @@
   </footer>
 
   <script src="js/bootstrap.bundle.js"></script>
-  <script src="js/script.js"></script>
-
 </body>
 </html>

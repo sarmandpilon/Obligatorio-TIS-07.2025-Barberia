@@ -1,119 +1,152 @@
-/*
-// ===== SISTEMA DE RESERVAS EN MEMORIA =====
-function SistemaReservas() {
-    this.reservas = [];
+document.addEventListener("DOMContentLoaded", () => {
 
-    this.agregarReserva = function(nombre, barbero, fecha, hora, email, telefono) {
-        this.reservas.push({ nombre, barbero, fecha, hora, email, telefono });
-    };
+  class Reserva {
+    constructor(nombre, telefono, barbero, servicio, fecha, hora, email) {
+      this.nombre = nombre;
+      this.telefono = telefono;
+      this.barbero = barbero;
+      this.servicio = servicio;
+      this.fecha = fecha;
+      this.hora = hora;
+      this.email = email;
+    }
+  }
 
-    this.reservaExiste = function(barbero, fecha, hora) {
-        return this.reservas.some(r => r.barbero === barbero && r.fecha === fecha && r.hora === hora);
-    };
+  class Usuario {
+    constructor(nombre, contrasnia) {
+      this.nombre = nombre;
+      this.contrasnia = contrasnia;
+    }
+  }
 
-    this.delDia = function(hoy) {
-        return this.reservas.filter(r => r.fecha === hoy);
-    };
+  let listaDeUsuarios = [];
+  let usuarioAdministrador = new Usuario("admin", "Barberia");
+  listaDeUsuarios.push(usuarioAdministrador);
 
-    this.listarReservas = function() {
-        console.log("Reservas actuales:");
-        for (let i = 0; i < this.reservas.length; i++) {
-            const r = this.reservas[i];
-            console.log(`- ${r.nombre} con ${r.barbero} el ${r.fecha} a las ${r.hora}`);
+  let listaDeReservas = JSON.parse(localStorage.getItem("misReservas")) || [];
+
+  let formularioDeReserva = document.getElementById("form");
+  if (formularioDeReserva) {
+    formularioDeReserva.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      let campoNombre = document.getElementById("nombre").value;
+      let campoTelefono = document.getElementById("telefono").value;
+      let campoBarbero = document.getElementById("barbero").value;
+      let campoServicio = document.getElementById("servicio").value;
+      let campoFecha = document.getElementById("fecha").value;
+      let campoHora = document.getElementById("hora").value;
+      let campoEmail = document.getElementById("email").value;
+
+      let hayConflicto = false;
+
+      for (let i = 0; i < listaDeReservas.length; i++) {
+        let reservaExistente = listaDeReservas[i];
+        if (
+          reservaExistente.barbero === campoBarbero &&
+          reservaExistente.fecha === campoFecha &&
+          reservaExistente.hora === campoHora
+        ) 
+        {
+          hayConflicto = true;
         }
-    };
-}
+      }
 
-// ===== DECLARACIÓN DE SISTEMA Y EVENTOS =====
-let miSistema = new SistemaReservas();
+      if (hayConflicto) {
+        alert("Este barbero ya tiene una reserva en esa fecha y hora.");
+        return;
+      }
 
-// Datos de prueba para mostrar reservas al iniciar
-(() => {
-    const hoy = new Date().toISOString().split('T')[0];
-    miSistema.agregarReserva('Carlos', 'Juan', hoy, '10:00', 'carlos@ejemplo.com', '099111111');
-    miSistema.agregarReserva('María', 'Pedro', hoy, '11:00', 'maria@ejemplo.com', '099222222');
-})();
+      let nuevaReserva = new Reserva(
+        campoNombre,
+        campoTelefono,
+        campoBarbero,
+        campoServicio,
+        campoFecha,
+        campoHora,
+        campoEmail
+      );
 
-function eventos() {
-    const formReserva = document.querySelector("#form");
-    if (formReserva) {
-        formReserva.addEventListener("submit", realizarReserva);
-    }
+      listaDeReservas.push(nuevaReserva);
+      localStorage.setItem("misReservas", JSON.stringify(listaDeReservas));
 
-    const formLogin = document.querySelector("#login-form");
-    if (formLogin) {
-        formLogin.addEventListener("submit", realizarLogin);
-    }
-}
+      document.getElementById("confirmation").classList.remove("hidden");
+      document.getElementById("confirmation").innerText = "Reserva registrada correctamente.";
+      formularioDeReserva.reset();
+    });
+  }
 
-eventos();
 
-// ===== FUNCIONES =====
-function realizarReserva(e) {
-    e.preventDefault();
+  function iniciarSesion(evento) {
+    evento.preventDefault();
 
-    let nombre = document.querySelector("#name").value.trim();
-    let barbero = document.querySelector("#barber").value;
-    let fecha = document.querySelector("#date").value;
-    let hora = document.querySelector("#time").value;
-    let email = document.querySelector("#email").value;
-    let telefono = document.querySelector("#phone").value;
+    let textoUsuario = document.getElementById("usuario").value;
+    let textoContrasenia = document.getElementById("password").value;
 
-    let mensaje = "";
+    let usuarioCorrecto = false;
 
-    if (nombre && fecha && hora && email && telefono) {
-        if (!fechaValida(fecha)) {
-            mensaje = "La fecha seleccionada no es válida.";
-        } else if (barbero && miSistema.reservaExiste(barbero, fecha, hora)) {
-            mensaje = "Ese barbero ya tiene una reserva en ese horario.";
-        } else {
-            miSistema.agregarReserva(nombre, barbero, fecha, hora, email, telefono);
-            mensaje = `Reserva confirmada para ${nombre} el ${fecha} a las ${hora}.`;
-            document.querySelector("#form").reset();
-        }
+    listaDeUsuarios.forEach(function (usuario) {
+      if (usuario.nombre === textoUsuario && usuario.contrasnia === textoContrasenia) {
+        usuarioCorrecto = true;
+      }
+    });
+
+    if (usuarioCorrecto) {
+      sessionStorage.setItem("usuarioLogueado", textoUsuario);
+      window.location.href = "agenda.html";
     } else {
-        mensaje = "Por favor completá todos los campos.";
+      alert("Usuario o contraseña incorrectos.");
     }
+  }
 
-    mostrarMensajeConfirmacion(mensaje);
-    miSistema.listarReservas(); // Solo para depuración
+  let formularioDeLogin = document.getElementById("formLogin");
+  if (formularioDeLogin && document.getElementById("usuario")) {
+    formularioDeLogin.addEventListener("submit", iniciarSesion);
+  }
+
+function mostrarTablaDeReservas() {
+  let tablaDeReservas = document.getElementById("tabla-reservas");
+  if (!tablaDeReservas) return;
+
+  if (listaDeReservas.length === 0) {
+    tablaDeReservas.innerHTML = "<tr><td colspan='7'>No hay reservas registradas.</td></tr>";
+  } else {
+    tablaDeReservas.innerHTML = "";
+
+    for (let i = 0; i < listaDeReservas.length; i++) {
+      let reserva = listaDeReservas[i];
+      let fila = "<tr>";
+      fila += "<td>" + reserva.nombre + "</td>";
+      fila += "<td>" + reserva.telefono + "</td>";
+      fila += "<td>" + reserva.barbero + "</td>";
+      fila += "<td>" + reserva.servicio + "</td>"; 
+      fila += "<td>" + reserva.fecha + "</td>";
+      fila += "<td>" + reserva.hora + "</td>";
+      fila += "<td>" + reserva.email + "</td>";
+      fila += "</tr>";
+      tablaDeReservas.innerHTML += fila;
+    }
+  }
 }
 
-function mostrarMensajeConfirmacion(mensaje) {
-    let div = document.querySelector("#confirmation");
-    div.textContent = mensaje;
-    div.classList.remove("hidden");
-}
 
-function fechaValida(fecha) {
-    const hoy = new Date();
-    const f = new Date(fecha + 'T00:00');
-    if (f <= hoy) return false;
-    const dia = f.getDay();
-    if (dia === 0 || dia === 6) return false; // fin de semana
-    const feriados = [
-        '2025-01-01','2025-05-01','2025-07-18','2025-08-25','2025-12-25'
-    ];
-    return !feriados.includes(fecha);
-}
-
-function realizarLogin(e) {
-    e.preventDefault();
-    const u = document.querySelector('#user').value;
-    const p = document.querySelector('#pass').value;
-    const cont = document.querySelector('#reservas-dia');
-    if (u === 'ADMIN' && p === 'BARBERIA') {
-        const hoy = new Date().toISOString().split('T')[0];
-        const lista = document.querySelector('#lista-reservas');
-        lista.innerHTML = '';
-        miSistema.delDia(hoy).forEach(r => {
-            const li = document.createElement('li');
-            li.textContent = `${r.nombre} - ${r.hora} ${r.barbero ? '('+r.barbero+')':''}`;
-            lista.appendChild(li);
-        });
-        cont.classList.remove('hidden');
+  if (window.location.pathname.includes("agenda.html")) {
+    let usuarioActual = sessionStorage.getItem("usuarioLogueado");
+    if (usuarioActual !== "admin") {
+      window.location.href = "login.html";
     } else {
-        alert('Credenciales incorrectas');
+      mostrarTablaDeReservas();
     }
+  }
+
+});
+
+let botonLogout = document.getElementById("botonLogout");
+if (botonLogout) {
+  botonLogout.addEventListener("click", function (evento) {
+    evento.preventDefault();
+    sessionStorage.removeItem("usuarioLogueado");
+    window.location.href = "login.html";
+  });
 }
-*/
+

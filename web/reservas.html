@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva tu turno</title>
+
+  <!-- Google Fonts y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+ <header class="navbar-custom">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+      <img src="img/logo.png" alt="Logo Estilo Clásico" class="logo" />
+      <nav class="nav flex-wrap justify-content-end">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="reservas.html">Reservar Turno</a>
+        <a class="nav-link" href="precios.html">Precios</a>
+        <a class="nav-link" href="barberos.html">Barberos</a>
+        <a class="nav-link" href="galeria.html">Galería</a>
+        <a class="nav-link" href="contacto.html">Contacto</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="reserva-form">
+      <div id="confirmation" class="hidden mt-3"></div>
+      <h2>Reserva tu turno</h2>
+      <form id="form">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" class="form-control" required />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="tel" id="telefono" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="barbero" class="form-label">Barbero:</label>
+            <select id="barbero" class="form-select" required>
+              <option value="">-- Cualquiera --</option>
+              <option value="José">José</option>
+              <option value="Sebastián">Sebastián</option>
+              <option value="Mariana">Mariana</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="servicio" class="form-label">Servicio:</label>
+            <select id="servicio" class="form-select" required>
+              <option value="">-- Seleccioná un servicio --</option>
+              <option value="Corte General">Corte General</option>
+              <option value="Corte Pelo Afro">Corte Pelo Afro</option>
+              <option value="Color Completo">Color Completo</option>
+              <option value="Color Mechas">Color Mechas</option>
+              <option value="Corte y Afeitado">Corte y Afeitado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="date" class="form-label">Fecha:</label>
+            <input type="date" id="fecha" class="form-control" required />
+
+          </div>
+          <div class="col-md-6 mb-3">
+  <label for="hora" class="form-label">Hora:</label>
+  <select id="hora" class="form-select" required>
+    <option value="">-- Seleccioná una hora --</option>
+    <option value="09:00 - 09:30">09:00 - 09:30</option>
+    <option value="09:30 - 10:00">09:30 - 10:00</option>
+    <option value="10:00 - 10:30">10:00 - 10:30</option>
+    <option value="10:30 - 11:00">10:30 - 11:00</option>
+    <option value="11:00 - 11:30">11:00 - 11:30</option>
+    <option value="11:30 - 12:00">11:30 - 12:00</option>
+    <option value="12:00 - 12:30">12:00 - 12:30</option>
+    <option value="12:30 - 13:00">12:30 - 13:00</option>
+    <option value="13:00 - 13:30">13:00 - 13:30</option>
+    <option value="13:30 - 14:00">13:30 - 14:00</option>
+    <option value="14:00 - 14:30">14:00 - 14:30</option>
+    <option value="14:30 - 15:00">14:30 - 15:00</option>
+    <option value="15:00 - 15:30">15:00 - 15:30</option>
+    <option value="15:30 - 16:00">15:30 - 16:00</option>
+    <option value="16:00 - 16:30">16:00 - 16:30</option>
+    <option value="16:30 - 17:00">16:30 - 17:00</option>
+    <option value="17:00 - 17:30">17:00 - 17:30</option>
+    <option value="17:30 - 18:00">17:30 - 18:00</option>
+  </select>
+</div>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" id="email" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Reservar</button>
+      </form>
+
+      
+    </section>
+  </main>
+
+  <!-- Script para fijar el día mínimo en el calendario -->
+  <script>
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").setAttribute("min", today);
+  </script>
+
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/script.js"></script>
+</body>
+<footer class="footer-custom">
+  <div class="container text-center py-3">
+    <p class="mb-0 text-white">&copy; 2025 Barbería Estilo Clásico. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+</html>
