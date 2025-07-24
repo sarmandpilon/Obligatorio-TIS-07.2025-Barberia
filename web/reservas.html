@@ -112,10 +112,15 @@
   </main>
 
   <!-- Script para fijar el día mínimo en el calendario -->
-  <script>
-    const today = new Date().toISOString().split("T")[0];
-    document.getElementById("date").setAttribute("min", today);
-  </script>
+<script>
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  const inputFecha = document.getElementById("fecha");
+  inputFecha.setAttribute("min", tomorrow.toISOString().split("T")[0]);
+</script>
+
 
   <script src="js/bootstrap.bundle.js"></script>
   <script src="js/script.js"></script>

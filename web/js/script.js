@@ -38,6 +38,25 @@ document.addEventListener("DOMContentLoaded", () => {
       let campoHora = document.getElementById("hora").value;
       let campoEmail = document.getElementById("email").value;
 
+      
+      // Validar nombre: que no esté vacío y no tenga números
+      if (campoNombre === "" || /\d/.test(campoNombre)) {
+        alert("El nombre debe contener solo letras.");
+        return;
+      }
+
+      // Validar teléfono: que no esté vacío y tenga solo números
+      if (campoTelefono === "" || isNaN(campoTelefono)) {
+        alert("El teléfono debe contener solo números.");
+        return;
+      }
+
+      // Validar email: que no esté vacío y contenga '@'
+      if (campoEmail === "" || !campoEmail.includes("@")) {
+        alert("El correo electrónico debe contener '@'.");
+        return;
+      }
+      
       let hayConflicto = false;
 
       for (let i = 0; i < listaDeReservas.length; i++) {
@@ -46,8 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
           reservaExistente.barbero === campoBarbero &&
           reservaExistente.fecha === campoFecha &&
           reservaExistente.hora === campoHora
-        ) 
-        {
+        ) {
           hayConflicto = true;
         }
       }
@@ -104,30 +122,30 @@ document.addEventListener("DOMContentLoaded", () => {
     formularioDeLogin.addEventListener("submit", iniciarSesion);
   }
 
-function mostrarTablaDeReservas() {
-  let tablaDeReservas = document.getElementById("tabla-reservas");
-  if (!tablaDeReservas) return;
+  function mostrarTablaDeReservas() {
+    let tablaDeReservas = document.getElementById("tabla-reservas");
+    if (!tablaDeReservas) return;
 
-  if (listaDeReservas.length === 0) {
-    tablaDeReservas.innerHTML = "<tr><td colspan='7'>No hay reservas registradas.</td></tr>";
-  } else {
-    tablaDeReservas.innerHTML = "";
+    if (listaDeReservas.length === 0) {
+      tablaDeReservas.innerHTML = "<tr><td colspan='7'>No hay reservas registradas.</td></tr>";
+    } else {
+      tablaDeReservas.innerHTML = "";
 
-    for (let i = 0; i < listaDeReservas.length; i++) {
-      let reserva = listaDeReservas[i];
-      let fila = "<tr>";
-      fila += "<td>" + reserva.nombre + "</td>";
-      fila += "<td>" + reserva.telefono + "</td>";
-      fila += "<td>" + reserva.barbero + "</td>";
-      fila += "<td>" + reserva.servicio + "</td>"; 
-      fila += "<td>" + reserva.fecha + "</td>";
-      fila += "<td>" + reserva.hora + "</td>";
-      fila += "<td>" + reserva.email + "</td>";
-      fila += "</tr>";
-      tablaDeReservas.innerHTML += fila;
+      for (let i = 0; i < listaDeReservas.length; i++) {
+        let reserva = listaDeReservas[i];
+        let fila = "<tr>";
+        fila += "<td>" + reserva.nombre + "</td>";
+        fila += "<td>" + reserva.telefono + "</td>";
+        fila += "<td>" + reserva.barbero + "</td>";
+        fila += "<td>" + reserva.servicio + "</td>";
+        fila += "<td>" + reserva.fecha + "</td>";
+        fila += "<td>" + reserva.hora + "</td>";
+        fila += "<td>" + reserva.email + "</td>";
+        fila += "</tr>";
+        tablaDeReservas.innerHTML += fila;
+      }
     }
   }
-}
 
 
   if (window.location.pathname.includes("agenda.html")) {
