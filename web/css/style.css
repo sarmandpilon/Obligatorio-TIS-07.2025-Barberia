@@ -24,6 +24,7 @@ body {
   color: white;
   padding: 0.75em 1em;
   position: relative;
+  z-index: 9999;
 }
 
 .navbar-custom .container {
@@ -136,6 +137,12 @@ body {
     padding-bottom: 0;
   }
 
+  .navbar-custom {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+
   .navbar-custom .container {
     flex-direction: row;
     align-items: center;
@@ -160,7 +167,7 @@ body {
     width: 100%;
     padding: 1rem 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    z-index: 9998;
     display: none;
   }
 
@@ -192,6 +199,7 @@ body {
     min-height: calc(100vh - 160px);
     padding: 1em;
     padding-bottom: 2em;
+    padding-top: 2em;
   }
 
   .overlay-text {
@@ -236,12 +244,14 @@ body {
   .hero {
     min-height: calc(100vh - 180px);
     padding: 0.5em;
+    padding-top: 2.5em;
   }
 
   .reserva-form {
     padding: 1rem;
     width: 98%;
     margin: 0.5rem auto;
+    margin-top: 1rem;
   }
 
   .overlay-text {
@@ -271,6 +281,8 @@ body {
   backdrop-filter: blur(3px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   margin: 1rem auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Estilos para páginas con contenido */
