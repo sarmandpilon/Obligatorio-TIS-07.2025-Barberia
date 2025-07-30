@@ -168,3 +168,54 @@ if (botonLogout) {
   });
 }
 
+// Funcionalidad del menú hamburger - Versión simplificada y funcional
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Script cargado - Iniciando menú hamburger');
+  
+  const navbarToggle = document.getElementById('navbar-toggle');
+  const navbarMenu = document.getElementById('navbar-menu');
+
+  console.log('Toggle button:', navbarToggle);
+  console.log('Menu:', navbarMenu);
+
+  if (navbarToggle && navbarMenu) {
+    console.log('Elementos encontrados, configurando eventos');
+    
+    // Toggle del menú al hacer clic en el botón hamburger
+    navbarToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Click en hamburger');
+      navbarMenu.classList.toggle('active');
+      console.log('Menu active:', navbarMenu.classList.contains('active'));
+    });
+
+    // Cerrar el menú cuando se hace clic en un enlace
+    const navLinks = navbarMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        console.log('Click en enlace, cerrando menú');
+        navbarMenu.classList.remove('active');
+      });
+    });
+
+    // Cerrar el menú cuando se hace clic fuera de él
+    document.addEventListener('click', function(event) {
+      const isClickInsideNav = navbarToggle.contains(event.target) || navbarMenu.contains(event.target);
+      if (!isClickInsideNav && navbarMenu.classList.contains('active')) {
+        console.log('Click fuera del menú, cerrando');
+        navbarMenu.classList.remove('active');
+      }
+    });
+
+    // Cerrar el menú al cambiar el tamaño de la ventana (si se hace más grande)
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        navbarMenu.classList.remove('active');
+      }
+    });
+  } else {
+    console.log('No se encontraron los elementos del menú');
+  }
+});
+

@@ -1,15 +1,36 @@
 /* FUENTE Y FONDO GENERAL */
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Trebuchet MS", Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #dad7cd;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
 }
 
 .navbar-custom {
   background: #000;
   color: white;
   padding: 0.75em 1em;
+  position: relative;
+}
+
+.navbar-custom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -21,23 +42,59 @@ body {
   margin-left: 1em;
   font-weight: bold;
   transition: transform 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .navbar-custom .nav-link:hover {
   transform: scale(1.2);
   text-decoration: none;
+  color: white;
+}
+
+/* Botón hamburger */
+.navbar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
 }
 
 .hero {
   background-image: url('../img/fotoFondo.png');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2em 2.5em;
   position: relative;
+  flex: 1;
 }
 
 .overlay-text {
@@ -75,34 +132,129 @@ body {
 
 /* RESPONSIVE PARA CELULARES */
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+
   .navbar-custom .container {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .logo {
     height: 40px;
-    margin-bottom: 0.5em;
   }
 
-  .navbar-custom nav {
+  .navbar-toggle {
+    display: flex !important;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #000;
     flex-direction: column;
     width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+  }
+
+  .navbar-menu.active {
+    display: flex;
   }
 
   .navbar-custom .nav-link {
-    margin: 0.3em 0;
-    font-size: 1.1em;
+    margin: 0;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .navbar-custom .nav-link:hover {
+    transform: none;
+    background-color: #333;
+    color: #fff;
+  }
+
+  .navbar-custom .nav-link:last-child {
+    border-bottom: none;
   }
 
   .hero {
-    height: calc(100vh - 120px);
+    min-height: calc(100vh - 160px);
     padding: 1em;
+    padding-bottom: 2em;
   }
 
   .overlay-text {
     font-size: 1.8em;
     padding: 0 1em;
+  }
+
+  .content-page {
+    min-height: auto;
+    padding: 1em;
+  }
+
+  .main-content {
+    padding: 1em;
+  }
+
+  .reserva-form {
+    padding: 1.5em;
+    width: 95%;
+    max-height: none;
+    margin: 1rem auto;
+  }
+
+  .tabla-precios, .barberos-container, .gallery-container, .contacto-container, .agenda-container, .login-form {
+    padding: 1.5em;
+    width: 95%;
+  }
+
+  /* Asegurar que el footer sea visible */
+  .footer-custom {
+    padding: 1.5rem 0;
+    margin-top: 1rem;
+  }
+}
+
+/* Media query para dispositivos muy pequeños */
+@media (max-width: 480px) {
+  .navbar-toggle {
+    display: flex !important;
+  }
+
+  .hero {
+    min-height: calc(100vh - 180px);
+    padding: 0.5em;
+  }
+
+  .reserva-form {
+    padding: 1rem;
+    width: 98%;
+    margin: 0.5rem auto;
+  }
+
+  .overlay-text {
+    font-size: 1.5em;
+  }
+
+  .navbar-custom {
+    padding: 0.5em 1em;
+  }
+
+  .footer-custom {
+    padding: 1rem 0;
+    font-size: 0.8em;
   }
 }
 
@@ -114,10 +266,35 @@ body {
   color: white;
   max-width: 500px;
   width: 90%;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   backdrop-filter: blur(3px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  margin: 1rem auto;
+}
+
+/* Estilos para páginas con contenido */
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+/* Ajuste para páginas que no son la homepage */
+.content-page {
+  flex: 1;
+  min-height: auto;
+  padding: 1em 2.5em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.content-page .container {
+  width: 100%;
+  max-width: 1200px;
 }
 
 
@@ -134,6 +311,9 @@ body {
   font-size: 0.9em;
   position: relative;
   z-index: 10;
+  margin-top: auto;
+  padding: 1rem 0;
+  flex-shrink: 0;
 }
 
 .footer-custom p {
@@ -213,6 +393,21 @@ body {
   font-style: italic;
 }
 
+/* Estilos para agenda y login */
+.agenda-container, .login-form {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2em;
+  border-radius: 12px;
+  max-width: 1000px;
+  margin: auto;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-form {
+  max-width: 400px;
+}
 
 
 
