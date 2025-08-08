@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,14 +13,14 @@
 </head>
 
 <body>
- <header class="navbar-custom">
+  <header class="navbar-custom">
     <div class="container d-flex justify-content-between align-items-center flex-wrap">
       <img src="img/logo.png" alt="Logo Estilo Clásico" class="logo" />
-      
+
       <button class="navbar-toggle" id="navbar-toggle">
         ☰
       </button>
-      
+
       <nav class="navbar-menu" id="navbar-menu">
         <a class="nav-link" href="index.html">Inicio</a>
         <a class="nav-link" href="reservas.html">Reservar Turno</a>
@@ -78,29 +79,29 @@
 
           </div>
           <div class="col-md-6 mb-3">
-  <label for="hora" class="form-label">Hora:</label>
-  <select id="hora" class="form-select" required>
-    <option value="">-- Seleccioná una hora --</option>
-    <option value="09:00 - 09:30">09:00 - 09:30</option>
-    <option value="09:30 - 10:00">09:30 - 10:00</option>
-    <option value="10:00 - 10:30">10:00 - 10:30</option>
-    <option value="10:30 - 11:00">10:30 - 11:00</option>
-    <option value="11:00 - 11:30">11:00 - 11:30</option>
-    <option value="11:30 - 12:00">11:30 - 12:00</option>
-    <option value="12:00 - 12:30">12:00 - 12:30</option>
-    <option value="12:30 - 13:00">12:30 - 13:00</option>
-    <option value="13:00 - 13:30">13:00 - 13:30</option>
-    <option value="13:30 - 14:00">13:30 - 14:00</option>
-    <option value="14:00 - 14:30">14:00 - 14:30</option>
-    <option value="14:30 - 15:00">14:30 - 15:00</option>
-    <option value="15:00 - 15:30">15:00 - 15:30</option>
-    <option value="15:30 - 16:00">15:30 - 16:00</option>
-    <option value="16:00 - 16:30">16:00 - 16:30</option>
-    <option value="16:30 - 17:00">16:30 - 17:00</option>
-    <option value="17:00 - 17:30">17:00 - 17:30</option>
-    <option value="17:30 - 18:00">17:30 - 18:00</option>
-  </select>
-</div>
+            <label for="hora" class="form-label">Hora:</label>
+            <select id="hora" class="form-select" required>
+              <option value="">-- Seleccioná una hora --</option>
+              <option value="09:00 - 09:30">09:00 - 09:30</option>
+              <option value="09:30 - 10:00">09:30 - 10:00</option>
+              <option value="10:00 - 10:30">10:00 - 10:30</option>
+              <option value="10:30 - 11:00">10:30 - 11:00</option>
+              <option value="11:00 - 11:30">11:00 - 11:30</option>
+              <option value="11:30 - 12:00">11:30 - 12:00</option>
+              <option value="12:00 - 12:30">12:00 - 12:30</option>
+              <option value="12:30 - 13:00">12:30 - 13:00</option>
+              <option value="13:00 - 13:30">13:00 - 13:30</option>
+              <option value="13:30 - 14:00">13:30 - 14:00</option>
+              <option value="14:00 - 14:30">14:00 - 14:30</option>
+              <option value="14:30 - 15:00">14:30 - 15:00</option>
+              <option value="15:00 - 15:30">15:00 - 15:30</option>
+              <option value="15:30 - 16:00">15:30 - 16:00</option>
+              <option value="16:00 - 16:30">16:00 - 16:30</option>
+              <option value="16:30 - 17:00">16:30 - 17:00</option>
+              <option value="17:00 - 17:30">17:00 - 17:30</option>
+              <option value="17:30 - 18:00">17:30 - 18:00</option>
+            </select>
+          </div>
 
         </div>
 
@@ -112,7 +113,7 @@
         <button type="submit" class="btn btn-primary w-100">Reservar</button>
       </form>
 
-      
+
     </section>
   </main>
 
@@ -123,14 +124,14 @@
   </footer>
 
   <!-- Script para fijar el día mínimo en el calendario -->
-<script>
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
+  <script>
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
 
-  const inputFecha = document.getElementById("fecha");
-  inputFecha.setAttribute("min", tomorrow.toISOString().split("T")[0]);
-</script>
+    const inputFecha = document.getElementById("fecha");
+    inputFecha.setAttribute("min", tomorrow.toISOString().split("T")[0]);
+  </script>
 
 
   <script src="js/bootstrap.bundle.js"></script>
