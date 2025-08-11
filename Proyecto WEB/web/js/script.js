@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let listaDeReservas = JSON.parse(localStorage.getItem("misReservas")) || [];
 
-  let formularioDeReserva = document.getElementById("form");
+  let formularioDeReserva = document.getElementById("formulario-reserva");
   if (formularioDeReserva) {
     formularioDeReserva.addEventListener("submit", function (evento) {
       evento.preventDefault();
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  let formularioDeLogin = document.getElementById("formLogin");
+  let formularioDeLogin = document.getElementById("formulario-login");
   if (formularioDeLogin && document.getElementById("usuario")) {
     formularioDeLogin.addEventListener("submit", iniciarSesion);
   }
@@ -159,9 +159,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-let botonLogout = document.getElementById("botonLogout");
-if (botonLogout) {
-  botonLogout.addEventListener("click", function (evento) {
+let botonCerrarSesion = document.getElementById("boton-cerrar-sesion");
+if (botonCerrarSesion) {
+  botonCerrarSesion.addEventListener("click", function (evento) {
     evento.preventDefault();
     sessionStorage.removeItem("usuarioLogueado");
     window.location.href = "login.html";
@@ -171,47 +171,47 @@ if (botonLogout) {
 // Funcionalidad del menú hamburger - Versión simplificada y funcional
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Script cargado - Iniciando menú hamburger');
-  
-  const navbarToggle = document.getElementById('navbar-toggle');
-  const navbarMenu = document.getElementById('navbar-menu');
 
-  console.log('Toggle button:', navbarToggle);
-  console.log('Menu:', navbarMenu);
+  const botonMenu = document.getElementById('boton-menu');
+  const menuNavegacion = document.getElementById('menu-navegacion');
 
-  if (navbarToggle && navbarMenu) {
+  console.log('Botón de menú:', botonMenu);
+  console.log('Menú de navegación:', menuNavegacion);
+
+  if (botonMenu && menuNavegacion) {
     console.log('Elementos encontrados, configurando eventos');
-    
+
     // Toggle del menú al hacer clic en el botón hamburger
-    navbarToggle.addEventListener('click', function(e) {
+    botonMenu.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log('Click en hamburger');
-      navbarMenu.classList.toggle('active');
-      console.log('Menu active:', navbarMenu.classList.contains('active'));
+      console.log('Click en botón de menú');
+      menuNavegacion.classList.toggle('active');
+      console.log('Menú activo:', menuNavegacion.classList.contains('active'));
     });
 
     // Cerrar el menú cuando se hace clic en un enlace
-    const navLinks = navbarMenu.querySelectorAll('.nav-link');
+    const navLinks = menuNavegacion.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
       link.addEventListener('click', function() {
         console.log('Click en enlace, cerrando menú');
-        navbarMenu.classList.remove('active');
+        menuNavegacion.classList.remove('active');
       });
     });
 
     // Cerrar el menú cuando se hace clic fuera de él
     document.addEventListener('click', function(event) {
-      const isClickInsideNav = navbarToggle.contains(event.target) || navbarMenu.contains(event.target);
-      if (!isClickInsideNav && navbarMenu.classList.contains('active')) {
+      const clickDentroDelMenu = botonMenu.contains(event.target) || menuNavegacion.contains(event.target);
+      if (!clickDentroDelMenu && menuNavegacion.classList.contains('active')) {
         console.log('Click fuera del menú, cerrando');
-        navbarMenu.classList.remove('active');
+        menuNavegacion.classList.remove('active');
       }
     });
 
     // Cerrar el menú al cambiar el tamaño de la ventana (si se hace más grande)
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768) {
-        navbarMenu.classList.remove('active');
+        menuNavegacion.classList.remove('active');
       }
     });
   } else {

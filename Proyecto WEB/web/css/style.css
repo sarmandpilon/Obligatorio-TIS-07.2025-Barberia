@@ -54,7 +54,7 @@ body {
 }
 
 /* Botón hamburger */
-.navbar-toggle {
+.boton-menu {
   background: none;
   border: none;
   color: white;
@@ -71,16 +71,16 @@ body {
   justify-content: center;
 }
 
-.navbar-toggle:hover {
+.boton-menu:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.navbar-toggle:focus {
+.boton-menu:focus {
   outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
 
-.navbar-menu {
+.menu-navegacion {
   display: flex;
   align-items: center;
 }
@@ -153,11 +153,11 @@ body {
     height: 40px;
   }
 
-  .navbar-toggle {
+  .boton-menu {
     display: flex !important;
   }
 
-  .navbar-menu {
+  .menu-navegacion {
     position: absolute;
     top: 100%;
     left: 0;
@@ -171,7 +171,7 @@ body {
     display: none;
   }
 
-  .navbar-menu.active {
+  .menu-navegacion.active {
     display: flex;
   }
 
@@ -237,7 +237,7 @@ body {
 
 /* Media query para dispositivos muy pequeños */
 @media (max-width: 480px) {
-  .navbar-toggle {
+  .boton-menu {
     display: flex !important;
   }
 
